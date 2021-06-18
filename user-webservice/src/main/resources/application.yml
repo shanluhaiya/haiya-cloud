@@ -17,3 +17,18 @@ dubbo:
   protocol:
     name: dubbo
     port: 1${server.port}
+
+spring:
+  datasource:
+    #当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    #mysql驱动包
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/haiya_platform?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: learning
+    password: Lear@2021
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  #所有entity别名类所在包
+  type-aliases-package: com.haiya.entity
