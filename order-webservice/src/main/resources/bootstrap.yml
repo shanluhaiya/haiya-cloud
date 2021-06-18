@@ -1,0 +1,13 @@
+server:
+  port: 9011
+
+spring:
+  application:
+    name: order-webservice
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
