@@ -12,6 +12,7 @@
         <module>user-webservice</module>
         <module>user-api</module>
         <module>order-webservice</module>
+        <module>product-restservice</module>
     </modules>
 
     <packaging>pom</packaging>
