@@ -13,6 +13,7 @@
         <module>user-api</module>
         <module>order-webservice</module>
         <module>product-restservice</module>
+        <module>haiya-common</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -29,10 +30,13 @@
         <servlet-api.version>4.0.1</servlet-api.version>
         <junit.version>4.12</junit.version>
         <log4j.version>1.2.17</log4j.version>
-        <lombok.version>1.16.18</lombok.version>
-        <mysql.version>5.1.47</mysql.version>
-        <druid.version>1.1.21</druid.version>
-        <mybatis.spring.boot.version>1.3.0</mybatis.spring.boot.version>
+        <lombok.version>1.18.16</lombok.version>
+        <mysql.version>8.0.22</mysql.version>
+        <druid.version>1.2.5</druid.version>
+        <mybatis.spring.boot.version>2.1.3</mybatis.spring.boot.version>
+        <pagehelper.version>1.3.0</pagehelper.version>
+        <haiya.common.version>1.0-SNAPSHOT</haiya.common.version>
+        <haiya.userapi.version>1.0-SNAPSHOT</haiya.userapi.version>
     </properties>
 
     <dependencyManagement>
@@ -76,6 +80,13 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.spring.boot.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <!-- 特别注意版本问题 -->
+                <version>${pagehelper.version}</version>
+            </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -94,8 +105,14 @@
 
             <dependency>
                 <groupId>com.haiya</groupId>
+                <artifactId>haiya-common</artifactId>
+                <version>${haiya.common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.haiya</groupId>
                 <artifactId>user-api</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${haiya.userapi.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiya.dao.UserDao">
+<!--    <insert id="create" parameterType="com.haiya.po.User">-->
+<!--        insert into hy_user(id, username, age, sex, salary, status,create_time, modify_time, login_time)-->
+<!--        values (#{id}, #{username}, #{age}, #{sex}, #{salary}, #{status}, #{createTime}, #{modifyTime}, #{loginTime})-->
+<!--    </insert>-->
+
+    <sql id="Base_Column_List">
+        id, username, age, sex, salary, status, create_time, modify_time, login_time
+    </sql>
+    <select id="queryList" resultType="com.haiya.po.User">
+        select * from hy_user
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="queryTotal" resultType="int">
+        select count(*) from hy_user
+        <where>
+            <if test="username != null and username.trim() != ''">
+                and `username` like concat('%',#{username},'%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="create" parameterType="com.haiya.po.User">
+        insert into hy_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="salary != null">
+                salary,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="loginTime != null">
+                login_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="username != null">
+                #{username},
+            </if>
+            <if test="age != null">
+                #{age},
+            </if>
+            <if test="sex != null">
+                #{sex},
+            </if>
+            <if test="salary != null">
+                #{salary},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime},
+            </if>
+            <if test="loginTime != null">
+                #{loginTime},
+            </if>
+        </trim>
+    </insert>
+
+    <sql id="BASE_UPDATE_SQL">
+        update hy_user
+        <set>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="salary != null">
+                salary = #{salary,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginTime != null">
+                login_time = #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+    </sql>
+    <sql id="BASE_WHERE_CONDITION">
+        where id = #{id,jdbcType=VARCHAR}
+    </sql>
+
+    <update id="updateById" parameterType="com.haiya.po.User">
+        <include refid="BASE_UPDATE_SQL" />
+        <include refid="BASE_WHERE_CONDITION" />
+    </update>
+
+    <update id="update">
+        <include refid="BASE_UPDATE_SQL" />
+        <include refid="BASE_WHERE_CONDITION" />
+    </update>
+
+    <resultMap id="BaseResultMap" type="com.haiya.po.User">
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <id column="username" property="username" jdbcType="VARCHAR" />
+        <id column="age" property="age" jdbcType="INTEGER" />
+        <id column="salary" property="salary" jdbcType="BIGINT" />
+        <id column="status" property="status" jdbcType="TINYINT" />
+        <id column="sex" property="sex" jdbcType="VARCHAR" />
+        <id column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <id column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+        <id column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <select id="detail" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from hy_user
+        <include refid="BASE_WHERE_CONDITION" />
+    </select>
+</mapper>

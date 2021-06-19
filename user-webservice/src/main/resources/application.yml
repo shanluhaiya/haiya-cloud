@@ -23,8 +23,9 @@ spring:
     #当前数据源操作类型
     type: com.alibaba.druid.pool.DruidDataSource
     #mysql驱动包
-    driver-class-name: org.gjt.mm.mysql.Driver
-    url: jdbc:mysql://localhost:3306/haiya_platform?useUnicode=true&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #时区设置！
+    url: jdbc:mysql://localhost:3306/haiya_platform?useUnicode=true&tinyInt1isBit=false&serverTimezone=UTC&characterEncoding=utf8&useSSL=false&useAffectedRows=true
     username: learning
     password: Lear@2021
 
@@ -32,3 +33,18 @@ mybatis:
   mapperLocations: classpath:mapper/*.xml
   #所有entity别名类所在包
   type-aliases-package: com.haiya.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+# 设置myBatis sql日志打印
+logging:
+  # 配置log4j2
+  #config: classpath:log4j2.xml
+  level:
+    com.haiya.dao : debug
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
