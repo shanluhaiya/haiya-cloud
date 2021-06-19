@@ -12,6 +12,12 @@ spring:
             - Path=/api/user/**
           filters:
             - StripPrefix=1
+        - id: order
+          uri: lb://order-webservice
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - StripPrefix=1
         - id: rest
           uri: lb://product-restservice
           predicates:
