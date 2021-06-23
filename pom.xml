@@ -14,6 +14,8 @@
         <module>order-webservice</module>
         <module>product-restservice</module>
         <module>haiya-common</module>
+        <module>haiya-config-client</module>
+        <module>seata-demos</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -35,6 +37,7 @@
         <druid.version>1.2.5</druid.version>
         <mybatis.spring.boot.version>2.1.3</mybatis.spring.boot.version>
         <pagehelper.version>1.3.0</pagehelper.version>
+        <seata.version>1.4.0</seata.version>
         <haiya.common.version>1.0-SNAPSHOT</haiya.common.version>
         <haiya.userapi.version>1.0-SNAPSHOT</haiya.userapi.version>
     </properties>

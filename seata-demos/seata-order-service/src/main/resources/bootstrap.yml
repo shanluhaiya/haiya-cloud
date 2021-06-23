@@ -1,0 +1,20 @@
+server:
+  port: 7002
+spring:
+  application:
+    name: seata-order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+    alibaba:
+      seata:
+        # 自定义事务组名称需要与seata-server中的对应
+        tx-service-group: hy_seata_group
+  # 是否允许重名bean定义覆盖
+  # spring中默认是true，也就是默认支持名称相同的bean的覆盖。而springboot中的默认值是false，也就是不支持名称相同的bean被覆盖。
+  # 具体根据业务需求设置合理的值
+  main:
+    allow-bean-definition-overriding: true

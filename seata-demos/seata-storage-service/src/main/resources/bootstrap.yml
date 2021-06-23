@@ -1,0 +1,17 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: seata-storage-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+
+  # 是否允许重名bean定义覆盖
+  # spring中默认是true，也就是默认支持名称相同的bean的覆盖。而springboot中的默认值是false，也就是不支持名称相同的bean被覆盖。
+  # 具体根据业务需求设置合理的值
+  main:
+    allow-bean-definition-overriding: true

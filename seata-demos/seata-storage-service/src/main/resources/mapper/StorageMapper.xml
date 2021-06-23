@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiya.dao.StorageDao">
+    <sql id="Base_Column_List">
+        id, commodity_code, `count`
+    </sql>
+    <select id="info" resultType="com.haiya.entity.Storage">
+        select
+        <include refid="Base_Column_List" />
+        from hy_storage
+        where commodity_code = #{commodityCode}
+    </select>
+    <update id="deduct">
+        update hy_storage set `count` = count - #{count} where commodity_code = #{commodityCode}
+    </update>
+</mapper>

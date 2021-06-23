@@ -1,0 +1,50 @@
+dubbo:
+  scan:
+    base-packages: com.haiya.service
+  cloud:
+    subscribed-services:
+  # 这里设置名为dubbo的bean ??
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
+  registry:
+    address: spring-cloud://localhost
+  consumer:
+    timeout: 5000
+    check: false
+    retries: 0
+  protocol:
+    name: dubbo
+    port: 1${server.port}
+
+spring:
+  datasource:
+    #当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    #mysql驱动包
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #时区设置！
+    url: jdbc:mysql://localhost:3306/seata_warehouse_service?useUnicode=true&tinyInt1isBit=false&serverTimezone=UTC&characterEncoding=utf8&useSSL=false&useAffectedRows=true
+    username: learning
+    password: Lear@2021
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  #所有entity别名类所在包
+  type-aliases-package: com.haiya.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+# 设置myBatis sql日志打印
+logging:
+  # 配置log4j2
+  #config: classpath:log4j2.xml
+  level:
+    com.haiya.dao : debug
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true

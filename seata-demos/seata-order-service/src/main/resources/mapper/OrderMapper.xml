@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiya.dao.OrderDao">
+    <insert id="create" parameterType="com.haiya.entity.Order" useGeneratedKeys="true">
+        insert into hy_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="commodityCode != null">
+                commodity_code,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="totalPrice != null">
+                total_price,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="commodityCode != null">
+                #{commodityCode},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum},
+            </if>
+            <if test="price != null">
+                #{price},
+            </if>
+            <if test="totalPrice != null">
+                #{totalPrice},
+            </if>
+        </trim>
+    </insert>
+</mapper>
